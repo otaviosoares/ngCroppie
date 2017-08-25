@@ -52,10 +52,11 @@
                     scope.viewport.w = 250; scope.viewport.h = 250;
                     scope.boundry.w = 300; scope.boundry.h = 300;
                 } else {
-                    scope.viewport.w = (scope.viewport.w != undefined) ? scope.viewport.w : 300;
-                    scope.viewport.h = (scope.viewport.h != undefined) ? scope.viewport.h : 300;
-                    scope.boundry.w = (scope.boundry.w != undefined) ? scope.boundry.w : 400;
-                    scope.boundry.h = (scope.boundry.h != undefined) ? scope.boundry.h : 400;
+                    scope.viewport.w = scope.viewport.w || 300;
+                    scope.viewport.h = scope.viewport.h || 300;
+                    scope.boundry.w = scope.boundry.w || 400;
+                    scope.boundry.h = scope.boundry.h || 400;
+                    scope.boundry.enforce = scope.boundry.enforce || true;
                 }
 
                 // viewport cannot be larger than the boundaries
@@ -82,6 +83,7 @@
                         width: scope.boundry.w,
                         height: scope.boundry.h
                     },
+                    enforceBoundary: scope.boundry.enforce,
                     enableZoom: zoom,
                     mouseWheelZoom: mouseZoom,
                     showZoomer: zoomSlider,
