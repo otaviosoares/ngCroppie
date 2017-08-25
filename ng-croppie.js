@@ -41,13 +41,8 @@
             },
             link: function (scope, elem, attr) {
                 // defaults
-                if (scope.viewport == undefined) {
-                    scope.viewport = {w: null, h: null};
-                }
-                if (scope.boundry == undefined) {
-                    scope.boundry = {w: null, h: null};
-                }
-
+                scope.viewport = scope.viewport || {w: null, h: null};
+                scope.boundry = scope.boundry || {w: null, h: null};
                 scope.result = scope.result || 'canvas';
 
                 // catches
