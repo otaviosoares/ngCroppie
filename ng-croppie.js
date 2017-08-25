@@ -28,16 +28,16 @@
                 rotation: '=',
                 viewport: '=',
                 boundry: '=',
-                type: '@',
-                result: '=',
-                zoom: '@',
+                type: '@?',
+                result: '=?',
+                zoom: '@?',
                 mousezoom: '@',
                 zoomslider: '@',
-                exif: '@',
-                orientation: '@',
-                update: '=',
+                exif: '@?',
+                orientation: '@?',
+                update: '=?',
                 ngModel: '=',
-                mobile: '@'
+                mobile: '@?'
             },
             link: function (scope, elem, attr) {
                 // defaults
@@ -100,8 +100,12 @@
                 var croppieCanvas = angular.element(elem[0].getElementsByClassName('cr-boundary'))[0];
 
                 var intervalID;
-
-                var croppieCanvasRectangle = croppieCanvas.getBoundingClientRect();
+                
+                var croppieCanvasRectangle;
+                $timeout(function () {
+                    croppieCanvasRectangle = croppieCanvas.getBoundingClientRect();
+                    console.log(croppieCanvasRectangle)
+                }, 100);
 
                 // initialize interval only if action registered within ngCroppie container
                 croppieBody.addEventListener('mousedown', function() {
