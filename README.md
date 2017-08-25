@@ -77,7 +77,7 @@ angular
 - **Image** or **Blob** `data`: path to image file or base64;
 - **Base64** `ng-model`: the image output, returns are a base64;
 - **Function** `update`: place a functon in the controller to run whenever changes are made to the image;
-- **Object** `boundry { w: __, h: __ }`: (optional) the size of the container that will host the croppie tool - defaults to 400x400;
+- **Object** `boundry { w: __, h: __, enforce: __ }`: (optional) the size of the container that will host the croppie tool - defaults to 400x400 enforce true;
 - **Object** `viewport { w: __, h: __ }`: (optional) the output size, must be smaller than the boundry or it will equal it - defaults to 300x300;
 - **Boolean** `zoom`: (optional) enable zoom slider - defaults to true;
 - **Boolean** `mousezoom`: enable mouse scroll bar to zoom in/out. Works with `zoom` - defaults to true;
@@ -86,6 +86,7 @@ angular
 - **Boolean** `orientation`: (optional) enable custom orientation support when binding images - defaults to false.
 - **Integer** `rotation`: rotate the image by a specified degree amount, works with `orientation` - valid values: 90, 180, 270, -90, -180, -270;
 - **String** `type`: (optional) can either be 'circle' or 'square' - defaults to 'square';
+- **String** `result`: (optional) can either be 'canvas', 'base64', 'html', 'blob', 'rawcanvas' , 'viewport' or 'original' - defaults to 'canvas';
 - **Boolean** `mobile`: (optional) enable mobile view - defaults to viewport: 250x250 and boundry: 300x300;
 
 ## Version
