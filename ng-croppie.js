@@ -54,7 +54,7 @@
                     scope.viewport.h = scope.viewport.h || 300;
                     scope.boundry.w = scope.boundry.w || 400;
                     scope.boundry.h = scope.boundry.h || 400;
-                    scope.boundry.enforce = scope.boundry.enforce || true;
+                    scope.boundry.enforce = angular.isUndefined(scope.boundry.enforce) ? true : scope.boundry.enforce;
                 }
 
                 // viewport cannot be larger than the boundaries
