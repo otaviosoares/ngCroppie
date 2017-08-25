@@ -29,6 +29,7 @@
                 viewport: '=',
                 boundry: '=',
                 type: '@',
+                result: '=',
                 zoom: '@',
                 mousezoom: '@',
                 zoomslider: '@',
@@ -46,6 +47,8 @@
                 if (scope.boundry == undefined) {
                     scope.boundry = {w: null, h: null};
                 }
+
+                scope.result = scope.result || 'canvas';
 
                 // catches
                 if (scope.mobile === 'true') {
@@ -108,7 +111,7 @@
                 // initialize interval only if action registered within ngCroppie container
                 croppieBody.addEventListener('mousedown', function() {
                     intervalID = window.setInterval(function() {
-                        c.result('canvas').then(function(img) {
+                        c.result(scope.result).then(function(img) {
                             scope.$apply(function() {
                                 scope.ngModel = img;
                             });
@@ -123,7 +126,7 @@
                         console.log('Wheel event called');
                         evt.preventDefault();
                         if ((evt.clientX > croppieCanvasRectangle.left) && (evt.clientX < croppieCanvasRectangle.right) && (evt.clientY < croppieCanvasRectangle.bottom) && (evt.clientY > croppieCanvasRectangle.top)) {
-                            c.result('canvas').then(function(img) {
+                            c.result(scope.result).then(function(img) {
                                 scope.$apply(function() {
                                     scope.ngModel = img;
                                 });
@@ -153,7 +156,7 @@
                         throw 'ngCroppie: Cannot rotate without \'orientation\' option';
                     } else {
                         c.rotate(newValue - oldValue);
-                        c.result('canvas').then(function(img) {
+                        c.result(scope.result).then(function(img) {
                             scope.$apply(function () {
                                 scope.ngModel = img;
                             });
@@ -166,7 +169,7 @@
                     if (scope.src != undefined) {
                         c.bind(scope.src);
                         $timeout(function() {  //delayed for ng-file-upload
-                            c.result('canvas').then(function(img) {
+                            c.result(scope.result).then(function(img) {
                                 scope.$apply(function () {
                                     scope.ngModel = img;
                                 });
