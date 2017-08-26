@@ -104,7 +104,6 @@
                 var croppieCanvasRectangle;
                 $timeout(function () {
                     croppieCanvasRectangle = croppieCanvas.getBoundingClientRect();
-                    console.log(croppieCanvasRectangle)
                 }, 100);
 
                 // initialize interval only if action registered within ngCroppie container
